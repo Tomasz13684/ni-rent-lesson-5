@@ -25,6 +25,9 @@ class Manager:
         return True
 
     def get_apartment_costs(self, apartment_key, year=None, month=None):
+        if month is not None and not (1 <= month <= 12):
+            raise ValueError("Miesiąc musi być z zakresu od 1 do 12")
+
         if apartment_key not in self.apartments:
             return None
 
